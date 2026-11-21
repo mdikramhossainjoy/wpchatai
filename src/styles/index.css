@@ -1,0 +1,841 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Google+Sans+Text:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global strict shadow, filter, and backdrop-blur purge */
+#wpchat-root,
+#wpchat-root *,
+#wpchat-root *::before,
+#wpchat-root *::after,
+#wpchat-drawer-container,
+#wpchat-drawer-container *,
+#wpchat-drawer-container *::before,
+#wpchat-drawer-container *::after,
+#wpchat-settings-mount,
+#wpchat-settings-mount *,
+#wpchat-settings-mount *::before,
+#wpchat-settings-mount *::after,
+#wpchat-settings-page,
+#wpchat-settings-page *,
+#wpchat-settings-page *::before,
+#wpchat-settings-page *::after,
+#wpchat-toast-container,
+#wpchat-toast-container *,
+[id*="wpchat"],
+[id*="wpchat"] *,
+[id*="wpchat"] *::before,
+[id*="wpchat"] *::after,
+.wpchat-app,
+[class*="wpchat-"],
+[class*="wpchat-"] * {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Subtle, Lightened Backdrop Overlays - Zero Blur, Less Dark Opacity */
+.wpchat-drawer-backdrop,
+.wpchat-modal-backdrop,
+#wpchat-root .wpchat-drawer-backdrop,
+#wpchat-root .wpchat-modal-backdrop,
+#wpchat-settings-modal-backdrop,
+#wpchat-confirm-modal-overlay {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+#wpchat-root,
+#wpchat-root *,
+#wpchat-settings-mount,
+#wpchat-settings-mount *,
+#wpchat-settings-page,
+#wpchat-settings-page *,
+.wpchat-app,
+[class*="wpchat-"] {
+  font-family: 'Google Sans', 'Google Sans Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-numeric: tabular-nums lining-nums !important;
+}
+
+/* Raw code snippets inside pre/code blocks strictly retain clean monospace */
+#wpchat-root pre,
+#wpchat-root pre *,
+#wpchat-root code,
+#wpchat-root code *,
+#wpchat-settings-mount pre,
+#wpchat-settings-mount pre *,
+#wpchat-settings-mount code,
+#wpchat-settings-mount code * {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+}
+
+/* Kill all scrollbars and scrolling arrows on the tabs bar */
+.wpchat-tabs-bar,
+#wpchat-settings-mount .wpchat-tabs-bar,
+[id*="wpchat-tabs"] {
+  overflow-y: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.wpchat-tabs-bar::-webkit-scrollbar,
+.wpchat-tabs-bar::-webkit-scrollbar-button,
+.wpchat-tabs-bar::-webkit-scrollbar-thumb,
+.wpchat-tabs-bar::-webkit-scrollbar-track,
+#wpchat-settings-mount .wpchat-tabs-bar::-webkit-scrollbar,
+#wpchat-settings-mount .wpchat-tabs-bar::-webkit-scrollbar-button,
+#wpchat-settings-mount .wpchat-tabs-bar::-webkit-scrollbar-thumb,
+#wpchat-settings-mount .wpchat-tabs-bar::-webkit-scrollbar-track {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+/* ==========================================================================
+   Base Less-Opacity Border System (0.08)
+   ========================================================================== */
+#wpchat-root .border-border,
+#wpchat-settings-mount .border-border,
+#wpchat-drawer-container .border-border,
+#wpchat-settings-page .border-border,
+.border-border,
+.wpchat-card,
+.wpchat-nice-select,
+.wpchat-nice-select-dropdown,
+.wpchat-chat-form-container,
+input.wpchat-custom-input,
+.wpchat-radio-item,
+.wpchat-checkbox-box,
+[id*="wpchat-settings-modal-card"],
+[id*="wpchat-confirm-modal-card"],
+[id*="wpchat-snippets-modal-card"],
+[id*="wpchat-toast-"] {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+#wpchat-drawer-container {
+  border-left: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+/* ==========================================================================
+   Refined Border System: Clean 1px Borders & Soft Transitions (0.22 - 0.25)
+   ========================================================================== */
+
+/* 1. Tabs - Strictly ZERO 4-sided box outlines, only subtle bottom indicator */
+.wpchat-tab-btn,
+#wpchat-settings-mount .wpchat-tab-btn,
+#wpchat-settings-page .wpchat-tab-btn {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 2px solid transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+
+.wpchat-tab-btn:hover,
+#wpchat-settings-mount .wpchat-tab-btn:hover,
+#wpchat-settings-page .wpchat-tab-btn:hover {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.22) !important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.wpchat-tab-btn.active,
+.wpchat-tab-btn[aria-selected="true"],
+.wpchat-tab-active,
+#wpchat-settings-mount .wpchat-tab-btn.active,
+#wpchat-settings-page .wpchat-tab-btn.active {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 2px solid #030712 !important;
+  background-color: #ffffff !important;
+  color: #030712 !important;
+}
+
+/* 2. All General Buttons & Interactive Roles (Excluding tab buttons) */
+#wpchat-root button:not(.wpchat-tab-btn):hover,
+#wpchat-root button:not(.wpchat-tab-btn):active,
+#wpchat-root button:not(.wpchat-tab-btn):focus,
+#wpchat-drawer-container button:not(.wpchat-tab-btn):hover,
+#wpchat-drawer-container button:not(.wpchat-tab-btn):active,
+#wpchat-drawer-container button:not(.wpchat-tab-btn):focus,
+#wpchat-settings-mount button:not(.wpchat-tab-btn):hover,
+#wpchat-settings-mount button:not(.wpchat-tab-btn):active,
+#wpchat-settings-mount button:not(.wpchat-tab-btn):focus,
+#wpchat-settings-page button:not(.wpchat-tab-btn):hover,
+#wpchat-settings-page button:not(.wpchat-tab-btn):active,
+#wpchat-settings-page button:not(.wpchat-tab-btn):focus,
+[id*="wpchat"] button:not(.wpchat-tab-btn):hover,
+[id*="wpchat"] button:not(.wpchat-tab-btn):active,
+[id*="wpchat"] button:not(.wpchat-tab-btn):focus,
+[id*="wpchat"] [role="button"]:hover,
+[id*="wpchat"] [role="button"]:active,
+[id*="wpchat"] [role="button"]:focus,
+button.wpchat-custom-btn:hover,
+button.wpchat-custom-btn:active,
+button.wpchat-header-btn:hover,
+button.wpchat-header-btn:active {
+  border-color: rgba(0, 0, 0, 0.22) !important;
+}
+
+/* 3. Inputs & Textareas */
+#wpchat-root input.wpchat-custom-input:hover,
+#wpchat-root input.wpchat-custom-input:active,
+#wpchat-root input.wpchat-custom-input:focus,
+#wpchat-drawer-container input.wpchat-custom-input:hover,
+#wpchat-drawer-container input.wpchat-custom-input:active,
+#wpchat-drawer-container input.wpchat-custom-input:focus,
+#wpchat-settings-page input.wpchat-custom-input:hover,
+#wpchat-settings-page input.wpchat-custom-input:active,
+#wpchat-settings-page input.wpchat-custom-input:focus,
+#wpchat-settings-page-container input.wpchat-custom-input:hover,
+#wpchat-settings-page-container input.wpchat-custom-input:active,
+#wpchat-settings-page-container input.wpchat-custom-input:focus,
+#wpchat-settings-modal-card input.wpchat-custom-input:hover,
+#wpchat-settings-modal-card input.wpchat-custom-input:active,
+#wpchat-settings-modal-card input.wpchat-custom-input:focus,
+#wpchat-page-api-key:hover,
+#wpchat-page-api-key:active,
+#wpchat-page-api-key:focus,
+#wpchat-input-api-key:hover,
+#wpchat-input-api-key:active,
+#wpchat-input-api-key:focus,
+#wpchat-custom-base-url:hover,
+#wpchat-custom-base-url:active,
+#wpchat-custom-base-url:focus,
+#modal-custom-base-url:hover,
+#modal-custom-base-url:active,
+#modal-custom-base-url:focus {
+  border-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+/* 4. Chat Form Container */
+#wpchat-root .wpchat-chat-form-container:hover,
+#wpchat-root .wpchat-chat-form-container:active,
+#wpchat-root .wpchat-chat-form-container:focus-within,
+#wpchat-drawer-container .wpchat-chat-form-container:hover,
+#wpchat-drawer-container .wpchat-chat-form-container:active,
+#wpchat-drawer-container .wpchat-chat-form-container:focus-within,
+#wpchat-chat-form:hover,
+#wpchat-chat-form:active,
+#wpchat-chat-form:focus-within {
+  border-color: rgba(0, 0, 0, 0.22) !important;
+}
+
+/* 5. Nice Select Trigger & Options */
+.wpchat-nice-select:hover,
+.wpchat-nice-select:active,
+.wpchat-nice-select:focus,
+.wpchat-nice-select[aria-expanded="true"],
+.wpchat-nice-select-option:hover,
+.wpchat-nice-select-option:active {
+  border-color: rgba(0, 0, 0, 0.22) !important;
+}
+
+/* 6. Custom Radio & Checkbox Controls */
+.wpchat-radio-item:hover,
+.wpchat-radio-item:active,
+.wpchat-radio-item.active,
+.wpchat-checkbox-item:hover,
+.wpchat-checkbox-item:active,
+.wpchat-checkbox-box:hover,
+.wpchat-checkbox-box:active,
+.wpchat-radio-circle:hover,
+.wpchat-radio-circle:active {
+  border-color: rgba(0, 0, 0, 0.22) !important;
+}
+
+.wpchat-radio-item:has(input:checked),
+.wpchat-radio-item.checked {
+  border-color: rgba(0, 0, 0, 0.28) !important;
+}
+
+.wpchat-radio-circle:has(input:checked),
+.wpchat-radio-item input:checked + .wpchat-radio-circle,
+.wpchat-checkbox-box:has(input:checked),
+.wpchat-checkbox-item input:checked + .wpchat-checkbox-box {
+  border-color: #030712 !important;
+}
+
+/* 7. Pills, Badges & Interactive Tags */
+#wpchat-pill-site:hover,
+#wpchat-pill-site:active,
+#wpchat-pill-woocommerce:hover,
+#wpchat-pill-woocommerce:active,
+#wpchat-quick-ideas-btn:hover,
+#wpchat-quick-ideas-btn:active,
+#wpchat-voice-btn:hover,
+#wpchat-voice-btn:active {
+  border-color: rgba(0, 0, 0, 0.22) !important;
+}
+
+/* 8. Dark Elements (Hover/Active Border White at 0.35) */
+#wpchat-root button.bg-\[\#030712\]:hover,
+#wpchat-root button.bg-\[\#030712\]:active,
+#wpchat-drawer-container button.bg-\[\#030712\]:hover,
+#wpchat-drawer-container button.bg-\[\#030712\]:active,
+#wpchat-settings-mount button.bg-\[\#030712\]:hover,
+#wpchat-settings-mount button.bg-\[\#030712\]:active,
+#wpchat-settings-page button.bg-\[\#030712\]:hover,
+#wpchat-settings-page button.bg-\[\#030712\]:active,
+button.wpchat-send-btn:hover,
+button.wpchat-send-btn:active {
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* Unique Scoped Custom Scrollbars - strictly isolated to unique WPChat IDs and classes */
+#wpchat-root .wpchat-scroll,
+#wpchat-root .wpchat-custom-scrollbar,
+#wpchat-drawer-container .wpchat-scroll,
+#wpchat-drawer-container .wpchat-custom-scrollbar,
+#wpchat-settings-page .wpchat-scroll,
+#wpchat-settings-page .wpchat-custom-scrollbar,
+#wpchat-settings-page-container .wpchat-scroll,
+#wpchat-settings-page-container .wpchat-custom-scrollbar,
+#wpchat-settings-modal-card .wpchat-scroll,
+#wpchat-settings-modal-card .wpchat-custom-scrollbar,
+#wpchat-root pre,
+#wpchat-drawer-container pre,
+#wpchat-settings-page pre,
+#wpchat-settings-modal-card pre {
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db transparent;
+}
+
+#wpchat-root .wpchat-scroll::-webkit-scrollbar,
+#wpchat-root .wpchat-custom-scrollbar::-webkit-scrollbar,
+#wpchat-drawer-container .wpchat-scroll::-webkit-scrollbar,
+#wpchat-drawer-container .wpchat-custom-scrollbar::-webkit-scrollbar,
+#wpchat-settings-page .wpchat-scroll::-webkit-scrollbar,
+#wpchat-settings-page .wpchat-custom-scrollbar::-webkit-scrollbar,
+#wpchat-settings-page-container .wpchat-scroll::-webkit-scrollbar,
+#wpchat-settings-page-container .wpchat-custom-scrollbar::-webkit-scrollbar,
+#wpchat-settings-modal-card .wpchat-scroll::-webkit-scrollbar,
+#wpchat-settings-modal-card .wpchat-custom-scrollbar::-webkit-scrollbar,
+#wpchat-root pre::-webkit-scrollbar,
+#wpchat-drawer-container pre::-webkit-scrollbar,
+#wpchat-settings-page pre::-webkit-scrollbar,
+#wpchat-settings-modal-card pre::-webkit-scrollbar {
+  width: 3px !important;
+  height: 3px !important;
+}
+
+#wpchat-root .wpchat-scroll::-webkit-scrollbar-track,
+#wpchat-root .wpchat-custom-scrollbar::-webkit-scrollbar-track,
+#wpchat-drawer-container .wpchat-scroll::-webkit-scrollbar-track,
+#wpchat-drawer-container .wpchat-custom-scrollbar::-webkit-scrollbar-track,
+#wpchat-settings-page .wpchat-scroll::-webkit-scrollbar-track,
+#wpchat-settings-page .wpchat-custom-scrollbar::-webkit-scrollbar-track,
+#wpchat-settings-page-container .wpchat-scroll::-webkit-scrollbar-track,
+#wpchat-settings-page-container .wpchat-custom-scrollbar::-webkit-scrollbar-track,
+#wpchat-settings-modal-card .wpchat-scroll::-webkit-scrollbar-track,
+#wpchat-settings-modal-card .wpchat-custom-scrollbar::-webkit-scrollbar-track,
+#wpchat-root pre::-webkit-scrollbar-track,
+#wpchat-drawer-container pre::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+#wpchat-root .wpchat-scroll::-webkit-scrollbar-thumb,
+#wpchat-root .wpchat-custom-scrollbar::-webkit-scrollbar-thumb,
+#wpchat-drawer-container .wpchat-scroll::-webkit-scrollbar-thumb,
+#wpchat-drawer-container .wpchat-custom-scrollbar::-webkit-scrollbar-thumb,
+#wpchat-settings-page .wpchat-scroll::-webkit-scrollbar-thumb,
+#wpchat-settings-page .wpchat-custom-scrollbar::-webkit-scrollbar-thumb,
+#wpchat-settings-page-container .wpchat-scroll::-webkit-scrollbar-thumb,
+#wpchat-settings-page-container .wpchat-custom-scrollbar::-webkit-scrollbar-thumb,
+#wpchat-settings-modal-card .wpchat-scroll::-webkit-scrollbar-thumb,
+#wpchat-settings-modal-card .wpchat-custom-scrollbar::-webkit-scrollbar-thumb,
+#wpchat-root pre::-webkit-scrollbar-thumb,
+#wpchat-drawer-container pre::-webkit-scrollbar-thumb {
+  background: #d1d5db !important;
+  border-radius: 9999px !important;
+}
+
+#wpchat-root .wpchat-scroll::-webkit-scrollbar-thumb:hover,
+#wpchat-root .wpchat-custom-scrollbar::-webkit-scrollbar-thumb:hover,
+#wpchat-drawer-container .wpchat-scroll::-webkit-scrollbar-thumb:hover,
+#wpchat-drawer-container .wpchat-custom-scrollbar::-webkit-scrollbar-thumb:hover,
+#wpchat-settings-page .wpchat-scroll::-webkit-scrollbar-thumb:hover,
+#wpchat-settings-page .wpchat-custom-scrollbar::-webkit-scrollbar-thumb:hover,
+#wpchat-settings-page-container .wpchat-scroll::-webkit-scrollbar-thumb:hover,
+#wpchat-settings-page-container .wpchat-custom-scrollbar::-webkit-scrollbar-thumb:hover,
+#wpchat-settings-modal-card .wpchat-scroll::-webkit-scrollbar-thumb:hover,
+#wpchat-settings-modal-card .wpchat-custom-scrollbar::-webkit-scrollbar-thumb:hover,
+#wpchat-root pre::-webkit-scrollbar-thumb:hover,
+#wpchat-drawer-container pre::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af !important;
+}
+
+#wpchat-root .wpchat-scroll::-webkit-scrollbar-button,
+#wpchat-root .wpchat-custom-scrollbar::-webkit-scrollbar-button,
+#wpchat-drawer-container .wpchat-scroll::-webkit-scrollbar-button,
+#wpchat-drawer-container .wpchat-custom-scrollbar::-webkit-scrollbar-button,
+#wpchat-settings-page .wpchat-scroll::-webkit-scrollbar-button,
+#wpchat-settings-page .wpchat-custom-scrollbar::-webkit-scrollbar-button,
+#wpchat-settings-page-container .wpchat-scroll::-webkit-scrollbar-button,
+#wpchat-settings-page-container .wpchat-custom-scrollbar::-webkit-scrollbar-button,
+#wpchat-settings-modal-card .wpchat-scroll::-webkit-scrollbar-button,
+#wpchat-settings-modal-card .wpchat-custom-scrollbar::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Unique Scoped Textarea scrollbar */
+#wpchat-root .wpchat-textarea,
+#wpchat-drawer-container .wpchat-textarea {
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db transparent;
+}
+
+#wpchat-root .wpchat-textarea::-webkit-scrollbar,
+#wpchat-drawer-container .wpchat-textarea::-webkit-scrollbar {
+  width: 2.5px !important;
+}
+
+#wpchat-root .wpchat-textarea::-webkit-scrollbar-button,
+#wpchat-drawer-container .wpchat-textarea::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+#wpchat-root .wpchat-textarea::-webkit-scrollbar-track,
+#wpchat-drawer-container .wpchat-textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#wpchat-root .wpchat-textarea::-webkit-scrollbar-thumb,
+#wpchat-drawer-container .wpchat-textarea::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 9999px;
+}
+
+/* Typing indicator dot bounce animation */
+@keyframes wpchat-dot-bounce {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.35;
+  }
+  40% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+.wpchat-typing-dot {
+  display: inline-block;
+  animation: wpchat-dot-bounce 1.4s infinite ease-in-out both;
+}
+
+.wpchat-typing-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.wpchat-typing-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.wpchat-typing-dot:nth-child(3) {
+  animation-delay: 0s;
+}
+
+/* Markdown prose styling */
+.wpchat-prose {
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: #030712;
+}
+
+.wpchat-prose h1 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0.75rem 0 0.35rem;
+  color: #030712;
+  line-height: 1.3;
+}
+
+.wpchat-prose h2 {
+  font-size: 0.925rem;
+  font-weight: 700;
+  margin: 0.65rem 0 0.3rem;
+  color: #030712;
+  line-height: 1.35;
+}
+
+.wpchat-prose h3 {
+  font-size: 0.825rem;
+  font-weight: 600;
+  margin: 0.5rem 0 0.25rem;
+  color: #030712;
+  line-height: 1.4;
+}
+
+.wpchat-prose h4,
+.wpchat-prose h5,
+.wpchat-prose h6 {
+  font-size: 0.775rem;
+  font-weight: 600;
+  margin: 0.4rem 0 0.2rem;
+  color: #030712;
+}
+
+.wpchat-prose p {
+  margin-bottom: 0.5rem;
+  line-height: 1.55;
+}
+
+.wpchat-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.wpchat-prose strong,
+.wpchat-prose b {
+  font-weight: 600;
+  color: #030712;
+}
+
+.wpchat-prose em,
+.wpchat-prose i {
+  font-style: italic;
+}
+
+.wpchat-prose ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  margin: 0.35rem 0 0.5rem;
+}
+
+.wpchat-prose ol {
+  list-style-type: decimal;
+  padding-left: 1.25rem;
+  margin: 0.35rem 0 0.5rem;
+}
+
+.wpchat-prose li {
+  margin-bottom: 0.2rem;
+  line-height: 1.5;
+}
+
+.wpchat-prose blockquote {
+  border-left: 3px solid #ebecef;
+  padding-left: 0.75rem;
+  color: #4b5563;
+  margin: 0.5rem 0;
+  font-style: italic;
+}
+
+.wpchat-prose hr {
+  border: 0;
+  border-top: 1px solid #ebecef;
+  margin: 0.75rem 0;
+}
+
+/* Horizontal scrolling wrapper for markdown tables with strict text no-wrap */
+.wpchat-root .wpchat-table-wrapper,
+.wpchat-prose .wpchat-table-wrapper,
+.wpchat-table-wrapper {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  margin: 0.65rem 0 !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 0.625rem !important;
+  background-color: #ffffff !important;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.18) transparent;
+}
+
+.wpchat-table-wrapper::-webkit-scrollbar {
+  height: 5px !important;
+}
+
+.wpchat-table-wrapper::-webkit-scrollbar-track {
+  background: #f9fafb !important;
+  border-radius: 4px !important;
+}
+
+.wpchat-table-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18) !important;
+  border-radius: 4px !important;
+}
+
+.wpchat-table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.32) !important;
+}
+
+.wpchat-root table,
+.wpchat-prose table,
+.wpchat-table-wrapper table {
+  width: 100% !important;
+  min-width: max-content !important;
+  border-collapse: collapse !important;
+  margin: 0 !important;
+  font-size: 0.725rem !important;
+  background-color: #ffffff !important;
+  table-layout: auto !important;
+}
+
+.wpchat-root th,
+.wpchat-root td,
+.wpchat-prose th,
+.wpchat-prose td,
+.wpchat-table-wrapper th,
+.wpchat-table-wrapper td {
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  padding: 0.45rem 0.75rem !important;
+  text-align: left !important;
+  white-space: nowrap !important; /* Strict text no-wrap on all cells */
+  word-break: keep-all !important;
+  word-wrap: normal !important;
+  overflow-wrap: normal !important;
+}
+
+.wpchat-root th,
+.wpchat-prose th,
+.wpchat-table-wrapper th {
+  background: #f9fafb !important;
+  font-weight: 600 !important;
+  color: #030712 !important;
+  letter-spacing: -0.01em !important;
+  white-space: nowrap !important;
+}
+
+.wpchat-root td,
+.wpchat-prose td,
+.wpchat-table-wrapper td {
+  color: #374151 !important;
+  white-space: nowrap !important;
+}
+
+.wpchat-root tbody tr:hover td,
+.wpchat-prose tbody tr:hover td,
+.wpchat-table-wrapper tbody tr:hover td {
+  background-color: #f9fafb !important;
+}
+
+.wpchat-prose pre {
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-size: 0.725rem;
+  line-height: 1.45;
+  margin: 0.5rem 0;
+  border: 1px solid #1e293b;
+}
+
+.wpchat-prose code:not(pre code) {
+  background: #f3f4f6;
+  color: #030712;
+  border: 1px solid #ebecef;
+  padding: 0.12rem 0.35rem;
+  border-radius: 0.3rem;
+  font-size: 0.725rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-weight: 500;
+}
+
+.wpchat-prose a {
+  color: #030712;
+  text-decoration: underline;
+  text-underline-offset: 2.5px;
+  font-weight: 500;
+}
+
+.wpchat-prose a:hover {
+  color: #4b5563;
+}
+
+/* ==========================================================================
+   WPChat Custom Inputs & WordPress Admin Isolation Overrides
+   Strictly scoped to WPChat unique IDs and classes — Zero global pollution
+   ========================================================================== */
+
+#wpchat-root input.wpchat-custom-input,
+#wpchat-drawer-container input.wpchat-custom-input,
+#wpchat-settings-page input.wpchat-custom-input,
+#wpchat-settings-page-container input.wpchat-custom-input,
+#wpchat-settings-modal-card input.wpchat-custom-input,
+#wpchat-page-api-key,
+#wpchat-input-api-key {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 38px !important;
+  height: 38px !important;
+  font-family: 'Google Sans', sans-serif !important;
+  font-variant-numeric: tabular-nums lining-nums !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  color: #030712 !important;
+  background-color: #f9fafb !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  box-shadow: none !important;
+  outline: none !important;
+  box-sizing: border-box !important;
+  transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+#wpchat-root input.wpchat-custom-input:focus,
+#wpchat-drawer-container input.wpchat-custom-input:focus,
+#wpchat-settings-page input.wpchat-custom-input:focus,
+#wpchat-settings-page-container input.wpchat-custom-input:focus,
+#wpchat-settings-modal-card input.wpchat-custom-input:focus,
+#wpchat-page-api-key:focus,
+#wpchat-input-api-key:focus {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.25) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+#wpchat-root input.wpchat-custom-input::placeholder,
+#wpchat-drawer-container input.wpchat-custom-input::placeholder,
+#wpchat-settings-page input.wpchat-custom-input::placeholder,
+#wpchat-settings-page-container input.wpchat-custom-input::placeholder,
+#wpchat-settings-modal-card input.wpchat-custom-input::placeholder,
+#wpchat-page-api-key::placeholder,
+#wpchat-input-api-key::placeholder {
+  color: #9ca3af !important;
+}
+
+/* WPChat Custom Textarea: complete override of WP admin form styles */
+#wpchat-root textarea.wpchat-textarea,
+#wpchat-drawer-container textarea.wpchat-textarea,
+#wpchat-chat-textarea {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 34px !important;
+  font-family: inherit !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  color: #030712 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  padding: 4px 6px !important;
+  resize: none !important;
+  box-sizing: border-box !important;
+}
+
+#wpchat-root textarea.wpchat-textarea:focus,
+#wpchat-drawer-container textarea.wpchat-textarea:focus,
+#wpchat-chat-textarea:focus {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Form Container */
+#wpchat-root .wpchat-chat-form-container,
+#wpchat-drawer-container .wpchat-chat-form-container,
+#wpchat-chat-form {
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  background-color: #f9fafb !important;
+  border-radius: 12px !important;
+  transition: all 0.15s ease-in-out !important;
+  box-shadow: none !important;
+}
+
+#wpchat-root .wpchat-chat-form-container:focus-within,
+#wpchat-drawer-container .wpchat-chat-form-container:focus-within,
+#wpchat-chat-form:focus-within {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.25) !important;
+  box-shadow: none !important;
+}
+
+/* Custom Buttons Override */
+#wpchat-root button.wpchat-custom-btn,
+#wpchat-drawer-container button.wpchat-custom-btn,
+#wpchat-settings-page button.wpchat-custom-btn,
+#wpchat-settings-page-container button.wpchat-custom-btn,
+#wpchat-settings-modal-card button.wpchat-custom-btn,
+#wpchat-root button.wpchat-header-btn,
+#wpchat-drawer-container button.wpchat-header-btn {
+  text-shadow: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  cursor: pointer !important;
+}
+
+/* Custom Nice Select: complete override of WP core select styles */
+#wpchat-root .wpchat-nice-select,
+#wpchat-settings-page .wpchat-nice-select,
+#wpchat-settings-modal-card .wpchat-nice-select {
+  min-height: 38px !important;
+  height: 38px !important;
+  max-width: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  background-color: #f9fafb !important;
+  color: #030712 !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  padding: 0 12px !important;
+}
+
+#wpchat-root .wpchat-nice-select:hover,
+#wpchat-settings-page .wpchat-nice-select:hover,
+#wpchat-settings-modal-card .wpchat-nice-select:hover {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+#wpchat-root .wpchat-nice-select:focus,
+#wpchat-settings-page .wpchat-nice-select:focus,
+#wpchat-settings-modal-card .wpchat-nice-select:focus {
+  border-color: rgba(0, 0, 0, 0.25) !important;
+  box-shadow: none !important;
+  background-color: #ffffff !important;
+  outline: none !important;
+}
+
+/* Radio & Checkbox Native Elements Complete Reset */
+#wpchat-root input.wpchat-radio-hidden,
+#wpchat-root input.wpchat-checkbox-hidden,
+#wpchat-settings-page input.wpchat-radio-hidden,
+#wpchat-settings-page input.wpchat-checkbox-hidden,
+#wpchat-drawer-container input.wpchat-radio-hidden,
+#wpchat-drawer-container input.wpchat-checkbox-hidden,
+#wpchat-settings-modal-card input.wpchat-radio-hidden,
+#wpchat-settings-modal-card input.wpchat-checkbox-hidden {
+  position: absolute !important;
+  opacity: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  border: 0 !important;
+  pointer-events: none !important;
+}
